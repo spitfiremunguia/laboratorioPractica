@@ -16,5 +16,23 @@ namespace laboratorioPractica
         {
             InitializeComponent();
         }
+
+        
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            frmsongManager newsongManager = new frmsongManager();
+            newsongManager.ShowDialog();
+        }
+
+        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        {
+            pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Añadir_64;
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Añadir_Filled_50;
+        }
     }
 }
