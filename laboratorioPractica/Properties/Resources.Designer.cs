@@ -93,16 +93,6 @@ namespace laboratorioPractica.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Búsqueda_48__1_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8_Búsqueda_48__1_", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
         internal static System.Drawing.Bitmap icons8_Cerrar_ventana_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Cerrar_ventana_48", resourceCulture);
@@ -123,9 +113,19 @@ namespace laboratorioPractica.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Clasificar_50__1_ {
+        internal static System.Drawing.Bitmap icons8_De_acuerdo_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8_Clasificar_50__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_De_acuerdo_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_De_acuerdo_50__1_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_De_acuerdo_50__1_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -143,9 +143,9 @@ namespace laboratorioPractica.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap icons8_Eliminar_imagen_48__1_ {
+        internal static System.Drawing.Bitmap icons8_Más_50 {
             get {
-                object obj = ResourceManager.GetObject("icons8_Eliminar_imagen_48__1_", resourceCulture);
+                object obj = ResourceManager.GetObject("icons8_Más_50", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -156,16 +156,6 @@ namespace laboratorioPractica.Properties {
         internal static System.Drawing.Bitmap icons8_Más_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Más_64", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap icons8_Más_64__1_ {
-            get {
-                object obj = ResourceManager.GetObject("icons8_Más_64__1_", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
