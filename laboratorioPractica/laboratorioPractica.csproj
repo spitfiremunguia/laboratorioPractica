@@ -64,6 +64,9 @@
     <Compile Include="frmsongManager.Designer.cs">
       <DependentUpon>frmsongManager.cs</DependentUpon>
     </Compile>
+    <Compile Include="myTabControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Song.cs" />
@@ -160,6 +163,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-No hay entrada Filled-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Cerrar ventana-48.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

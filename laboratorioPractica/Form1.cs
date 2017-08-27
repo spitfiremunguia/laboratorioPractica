@@ -30,12 +30,8 @@ namespace laboratorioPractica
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-
-        }
-
-        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
-        {
-
+            TabPage t = new TabPage();
+            
         }
         //private void pictureBox1_MouseHover(object sender, EventArgs e)
         //{
