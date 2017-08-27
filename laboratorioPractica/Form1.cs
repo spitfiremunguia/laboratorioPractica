@@ -7,32 +7,43 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Id3Lib;
 
 namespace laboratorioPractica
 {
     public partial class Form1 : Form
     {
+        List<Song> mainList = new List<Song>();
         public Form1()
         {
             InitializeComponent();
+            //tabControl1.Dock = DockStyle.Fill;
         }
-
-        
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            frmsongManager newsongManager = new frmsongManager();
-            newsongManager.ShowDialog();
+            OpenFileDialog opnSearchFiles = new OpenFileDialog();
+            opnSearchFiles.ShowDialog();
+            //opnSearchFiles.Filter=
+            //frmsongManager newsongManager = new frmsongManager();
+            //newsongManager.ShowDialog();
         }
 
-        private void pictureBox1_MouseHover(object sender, EventArgs e)
+        private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Añadir_64;
+
         }
 
-        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        private void tableLayoutPanel6_Paint(object sender, PaintEventArgs e)
         {
-            pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Añadir_Filled_50;
+
         }
+        //private void pictureBox1_MouseHover(object sender, EventArgs e)
+        //{
+        //    pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Añadir_64;
+        //}
+        //private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        //{
+        //    pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Añadir_Filled_50;
+        //}
     }
 }

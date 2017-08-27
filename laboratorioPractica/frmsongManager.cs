@@ -22,10 +22,18 @@ namespace laboratorioPractica
             string strSongName = this.textBox1.Text;
             string strSongDuration = this.textBox2.Text;
             double flag;
-            if(!double.TryParse(strSongDuration,out flag))
+            try
             {
-                throw new FormatException();
+                if (!double.TryParse(strSongDuration, out flag))
+                {
+                    throw new FormatException();
+                }
             }
+            catch
+            {
+                MessageBox.Show("lol", "Error",MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+         
             
         }
     }
