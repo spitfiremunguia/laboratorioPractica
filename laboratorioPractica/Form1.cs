@@ -102,7 +102,7 @@ namespace laboratorioPractica
             }
             if(treeView1.SelectedNode!=null)
             {
-                treeView1.SelectedNode.BackColor = Color.Blue;
+                
                 TabPage newPage = new TabPage();
                 newPage.Text = treeView1.SelectedNode.Text;
                 newPage.BackColor = Color.Black;
@@ -127,7 +127,11 @@ namespace laboratorioPractica
 
         private void treeView1_Click(object sender, EventArgs e)
         {
-           
+            foreach (TreeNode n in treeView1.Nodes)
+            {
+                n.BackColor = Color.Black;
+            }
+            
             
         }
     }

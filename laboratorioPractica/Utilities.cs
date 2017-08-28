@@ -103,7 +103,7 @@ namespace laboratorioPractica
             if(index>=0)
             {
                 t.SelectedNode = t.Nodes[index];
-                t.SelectedNode.BackColor = System.Drawing.Color.Blue;
+                t.Nodes[index].BackColor = System.Drawing.Color.Blue;
                 
             }
 
