@@ -33,11 +33,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="ICSharpCode.SharpZipLib">
-      <HintPath>..\..\..\..\..\..\Desktop\csid3lib-v0.6-src\id3lib\ID3Lib\bin\Release\ICSharpCode.SharpZipLib.dll</HintPath>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Desktop\csid3lib-v0.6-src (1)\id3lib\Mp3Lib\bin\Release\ICSharpCode.SharpZipLib.dll</HintPath>
     </Reference>
-    <Reference Include="Id3Lib">
-      <HintPath>..\..\..\..\..\..\Desktop\csid3lib-v0.6-src\id3lib\ID3Lib\bin\Release\Id3Lib.dll</HintPath>
+    <Reference Include="Id3Lib, Version=0.6.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\Desktop\csid3lib-v0.6-src (1)\id3lib\Mp3Lib\bin\Release\Id3Lib.dll</HintPath>
+    </Reference>
+    <Reference Include="Mp3Lib">
+      <HintPath>..\..\..\..\..\..\Desktop\csid3lib-v0.6-src (1)\id3lib\Mp3Lib\bin\Release\Mp3Lib.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -176,6 +181,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\icons8-De acuerdo-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Eliminar imagen-48 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Editar propiedad-50 %282%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Editar propiedad-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\icons8-Clasificar-50 %282%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

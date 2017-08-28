@@ -23,23 +23,24 @@ namespace laboratorioPractica
         {
             string playlistName = this.textBox1.Text;
             string playlistDescription = this.textBox2.Text;
-            try
-            {
-                if (playlistName==string.Empty)
-                {
-                    throw new FormatException();
-                }
-                else
-                {
-                    Playlist ply = new Playlist(playlistName, playlistDescription);
-                    Utilities.generalTree= Utilities.UpdateTreeview(t1,ply);
-                    this.Close();
-                }
-            }
-            catch
-            {
-                MessageBox.Show("lol", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+           
+               
+                Utilities.CreatePlaylistDirectory(playlistName);
+                Utilities.createlilplyfiles(Utilities.mainFilePath, playlistName, playlistDescription);
+                this.Close();
+                
+            
+            
+        }
+
+        private void pictureBox1_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_De_acuerdo_50;
+        }
+
+        private void pictureBox1_MouseMove(object sender, MouseEventArgs e)
+        {
+            pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_De_acuerdo_50__1_;
         }
     }
 }

@@ -10,6 +10,7 @@ namespace laboratorioPractica
     {
         private string songName { get; set; }
         private double duration { get; set; }
+        private sbyte fullPath { get; set; }
         public Song()
         {
 
