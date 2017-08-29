@@ -12,25 +12,20 @@ namespace laboratorioPractica
 {
     public partial class frmPlaylistManager : Form
     {
-        TreeView t1 = new TreeView();
+        
         public frmPlaylistManager(TreeView t)
         {
             InitializeComponent();
-            t1 = t;
+          
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             string playlistName = this.textBox1.Text;
             string playlistDescription = this.textBox2.Text;
-           
-               
-                Utilities.CreatePlaylistDirectory(playlistName);
-                Utilities.createlilplyfiles(Utilities.mainFilePath, playlistName, playlistDescription);
-                this.Close();
-                
-            
-            
+            Utilities.CreatePlaylistDirectory(playlistName);
+            Utilities.createlilplyfiles(Utilities.mainFilePath, playlistName, playlistDescription);
+            this.Close();
         }
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)

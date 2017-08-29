@@ -93,6 +93,16 @@ namespace laboratorioPractica.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Búsqueda_48__2_ {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Búsqueda_48__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Cerrar_ventana_48 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Cerrar_ventana_48", resourceCulture);
@@ -143,6 +153,16 @@ namespace laboratorioPractica.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_Detener_15 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Detener_15", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_Editar_propiedad_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8_Editar_propiedad_50", resourceCulture);
@@ -156,6 +176,16 @@ namespace laboratorioPractica.Properties {
         internal static System.Drawing.Bitmap icons8_Editar_propiedad_50__2_ {
             get {
                 object obj = ResourceManager.GetObject("icons8_Editar_propiedad_50__2_", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Eliminar_15 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Eliminar_15", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +236,16 @@ namespace laboratorioPractica.Properties {
         internal static System.Drawing.Bitmap icons8_No_hay_entrada_Filled_50 {
             get {
                 object obj = ResourceManager.GetObject("icons8_No_hay_entrada_Filled_50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap icons8_Play_15 {
+            get {
+                object obj = ResourceManager.GetObject("icons8_Play_15", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

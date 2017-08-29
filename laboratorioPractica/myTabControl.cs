@@ -19,6 +19,7 @@ namespace laboratorioPractica
         private ContextMenuStrip getcms()
         {
             ContextMenuStrip cms = new ContextMenuStrip();
+            cms.Items.Add("Add song", laboratorioPractica.Properties.Resources.icons8_Play_15, new EventHandler(this.addSong));
             cms.Items.Add("Close", laboratorioPractica.Properties.Resources.icons8_Cerrar_ventana_48, new EventHandler(this.Item_Clicked));
             return cms;
         }
@@ -35,6 +36,25 @@ namespace laboratorioPractica
                         this.TabPages.RemoveAt(i);
                     }
 
+                }
+            }
+        }
+        private void addSong(object sender, EventArgs e)
+        {
+            for (int i = 0; i < this.TabCount; i++)
+            {
+
+                Rectangle rect = this.GetTabRect(i);
+                if (rect.Contains(this.PointToClient(lastClickPos)))
+                {
+                    OpenFileDialog opnSearchFiles = new OpenFileDialog();
+                    opnSearchFiles.Multiselect = true;
+                    opnSearchFiles.Filter = "MP3s | *.mp3";
+                    opnSearchFiles.ShowDialog();
+                    string[]allPaths=opnSearchFiles.FileNames;
+                    opnSearchFiles.Dispose();
+                    DataGridView d = TabPages[i].Controls[0] as DataGridView;
+                    Utilities.addSongs(this.SelectedTab.Text,allPaths,d);
                 }
             }
         }

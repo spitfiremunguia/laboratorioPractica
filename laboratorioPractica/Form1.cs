@@ -11,6 +11,7 @@ using Id3Lib;
 using ICSharpCode;
 using Mp3Lib;
 using System.IO;
+using laboratorioPractica.Properties;
 
 namespace laboratorioPractica
 {
@@ -28,10 +29,7 @@ namespace laboratorioPractica
        
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
-            //OpenFileDialog opnSearchFiles = new OpenFileDialog();
-            //opnSearchFiles.Filter = "Music(.mp3) | *.mp3 | ALL Files(*.*) | *.* ";
-            //opnSearchFiles.ShowDialog();
-
+           
             frmPlaylistManager playlistManager = new frmPlaylistManager(treeView1);
             playlistManager.ShowDialog();
             treeView1.Nodes.Clear();
@@ -49,17 +47,6 @@ namespace laboratorioPractica
             pictureBox3.Image = laboratorioPractica.Properties.Resources.icons8_Eliminar_imagen_48;
         }
 
-       
-        private void pictureBox4_MouseLeave(object sender, EventArgs e)
-        {
-            //pictureBox4.Image = laboratorioPractica.Properties.Resources.icons8_Clasificar_50;
-        }
-
-        private void pictureBox4_MouseHover(object sender, MouseEventArgs e)
-        {
-            //pictureBox4.Image = laboratorioPractica.Properties.Resources.icons8_Clasificar_50__2_;
-        }
-
         private void pictureBox3_MouseMove(object sender, MouseEventArgs e)
         {
             pictureBox3.Image = laboratorioPractica.Properties.Resources.icons8_Eliminar_imagen_48__2_;
@@ -69,8 +56,24 @@ namespace laboratorioPractica
         {
             pictureBox1.Image = laboratorioPractica.Properties.Resources.icons8_Más_50;
         }
+        private void pictureBox2_MouseMove(object sender, MouseEventArgs e)
+        {
+            pictureBox2.Image = laboratorioPractica.Properties.Resources.icons8_Búsqueda_48__2_;
+        }
+        private void pictureBox2_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox2.Image = laboratorioPractica.Properties.Resources.icons8_Búsqueda_48;
+        }
+        private void pictureBox6_MouseMove(object sender, MouseEventArgs e)
+        {
+            pictureBox6.Image = laboratorioPractica.Properties.Resources.icons8_Búsqueda_48__2_;
+        }
 
-       
+        private void pictureBox6_MouseLeave(object sender, EventArgs e)
+        {
+            pictureBox6.Image = laboratorioPractica.Properties.Resources.icons8_Búsqueda_48;
+        }
+
         #endregion
 
         private void upwardToolStripMenuItem_Click(object sender, EventArgs e)
@@ -87,10 +90,10 @@ namespace laboratorioPractica
         {
             if(treeView1.SelectedNode!=null)
             {
-                Directory.Delete(Utilities.mainFilePath + treeView1.SelectedNode.Text);
+                Directory.Delete(Utilities.mainFilePath + treeView1.SelectedNode.Text,true);
+                
                 treeView1.Nodes.Remove(treeView1.SelectedNode);
             }
-            
             
         }
 
@@ -98,7 +101,8 @@ namespace laboratorioPractica
         {
             foreach(TreeNode n in treeView1.Nodes)
             {
-                n.BackColor = Color.Black;
+                n.BackColor = Color.Gainsboro;
+                treeView1.Focus();
             }
             if(treeView1.SelectedNode!=null)
             {
@@ -110,11 +114,15 @@ namespace laboratorioPractica
                 d.Height = newPage.Height * 2;
                 d.Width = newPage.Width *2;
                 d.Dock = DockStyle.Fill;
-                d.BackgroundColor = Color.Black;
-
+                d.BackgroundColor = Color.Gainsboro;
+                newPage.ToolTipText = "Right click to close";
+                myTabControl1.ShowToolTips=true;
                 newPage.Controls.Add(d);
                 myTabControl1.TabPages.Add(newPage);
                 d.Show();
+                Utilities.createPlaylistDisplay(d);
+                string playListPath = Utilities.mainFilePath + treeView1.SelectedNode.Text + "\\" + treeView1.SelectedNode.Text + ".lil";
+                Utilities.GetAllSongsFromDictionary(playListPath, d);
             }
            
         }
@@ -129,10 +137,15 @@ namespace laboratorioPractica
         {
             foreach (TreeNode n in treeView1.Nodes)
             {
-                n.BackColor = Color.Black;
+                n.BackColor = Color.Gainsboro;
+                treeView1.Focus();
             }
             
-            
+        }
+
+        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
+        {
+
         }
     }
 }
