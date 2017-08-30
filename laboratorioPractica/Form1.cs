@@ -21,19 +21,18 @@ namespace laboratorioPractica
         public Form1()
         {
             InitializeComponent();
-            Utilities.createMainBin(Utilities.mainFilePath);
-          
-            treeView1 = Utilities.UpdateTreeview(treeView1,Utilities.getAllPlaylistbins(Utilities.mainFilePath));
-           
+            Utilities.CreateMainBin(Utilities.mainFilePath);            
+            treeView1 = Utilities.UpdateTreeview(treeView1,Utilities.GetAllPlaylistbins(Utilities.mainFilePath));
+            myTabControl1.TabPages.RemoveAt(0);
         }
-       
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
            
             frmPlaylistManager playlistManager = new frmPlaylistManager(treeView1);
             playlistManager.ShowDialog();
             treeView1.Nodes.Clear();
-            treeView1= Utilities.UpdateTreeview( treeView1,Utilities.getAllPlaylistbins(Utilities.mainFilePath));
+            treeView1= Utilities.UpdateTreeview( treeView1,Utilities.GetAllPlaylistbins(Utilities.mainFilePath));
+
           
         }
 #region //buttons events
@@ -78,12 +77,12 @@ namespace laboratorioPractica
 
         private void upwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utilities.sortPlaylistByName(true,treeView1);
+            Utilities.SortPlaylistByName(true,treeView1);
         }
 
         private void downwardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Utilities.sortPlaylistByName(false, treeView1);
+            Utilities.SortPlaylistByName(false, treeView1);
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
@@ -94,9 +93,7 @@ namespace laboratorioPractica
                 
                 treeView1.Nodes.Remove(treeView1.SelectedNode);
             }
-            
         }
-
         private void treeView1_DoubleClick(object sender, EventArgs e)
         {
             foreach(TreeNode n in treeView1.Nodes)
@@ -106,46 +103,92 @@ namespace laboratorioPractica
             }
             if(treeView1.SelectedNode!=null)
             {
-                
                 TabPage newPage = new TabPage();
                 newPage.Text = treeView1.SelectedNode.Text;
                 newPage.BackColor = Color.Black;
                 DataGridView d = new DataGridView();
+                d.Name = treeView1.SelectedNode.Text;
                 d.Height = newPage.Height * 2;
                 d.Width = newPage.Width *2;
                 d.Dock = DockStyle.Fill;
-                d.BackgroundColor = Color.Gainsboro;
-                newPage.ToolTipText = "Right click to close";
+                d.EditMode = DataGridViewEditMode.EditProgrammatically;
+                d.AllowUserToResizeColumns = false;
+                d.RowHeadersVisible = false;
+                d.AllowUserToResizeRows = false;
+                d.AllowUserToResizeColumns = false;
+                d.AllowUserToOrderColumns = false;
+                d.CellMouseDoubleClick += CellMouseDoubleClick;
+                newPage.ToolTipText = "Right click to see more options";
                 myTabControl1.ShowToolTips=true;
                 newPage.Controls.Add(d);
                 myTabControl1.TabPages.Add(newPage);
                 d.Show();
-                Utilities.createPlaylistDisplay(d);
+                Utilities.CreatePlaylistDisplay(d);
                 string playListPath = Utilities.mainFilePath + treeView1.SelectedNode.Text + "\\" + treeView1.SelectedNode.Text + ".lil";
                 Utilities.GetAllSongsFromDictionary(playListPath, d);
             }
            
         }
-
+        
+        public void CellMouseDoubleClick(object sender, EventArgs e)
+        {
+            DataGridView d = sender as DataGridView;
+            DataGridViewCell c = d.SelectedCells[0];
+            if(c.ColumnIndex==2&&c.Value!=null)
+            {
+                string songPath = Utilities.SearchSongPath(d.Name, c.Value.ToString());
+                if(songPath!=string.Empty)
+                {
+                    axWindowsMediaPlayer2.URL = (songPath);
+                    TagLib.File f = TagLib.File.Create(songPath, TagLib.ReadStyle.Average);
+                    if (f.Tag.Pictures.Length == 0)
+                    {
+                        f.Dispose();
+                        pictureBox7.Image = Properties.Resources.icons8_No_hay_entrada_Filled_50;
+                        return;
+                    }
+                    MemoryStream ms = new MemoryStream(f.Tag.Pictures[0].Data.Data);
+                    System.Drawing.Image image = System.Drawing.Image.FromStream(ms);
+                    pictureBox7.Image = image;
+                    f.Dispose();
+                }
+              
+            }
+        }
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-           
-            Utilities.searchPlayList(textBox1.Text,treeView1.Nodes,treeView1);
+            Utilities.SearchPlayList(textBox1.Text,treeView1.Nodes,treeView1);
+        }
+
+       
+        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+            Utilities.SortPlayList(true, myTabControl1.SelectedTab.Controls[0] as DataGridView, myTabControl1.SelectedTab.Text, true);
+        }
+
+        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            Utilities.SortPlayList(false, myTabControl1.SelectedTab.Controls[0] as DataGridView, myTabControl1.SelectedTab.Text, true);
+        }
+
+        private void upwardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Utilities.SortPlayList(true, myTabControl1.SelectedTab.Controls[0] as DataGridView, myTabControl1.SelectedTab.Text,false);
+        }
+
+        private void downwardToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            Utilities.SortPlayList(false, myTabControl1.SelectedTab.Controls[0] as DataGridView, myTabControl1.SelectedTab.Text, false);
+        }
+
+        private void pictureBox6_Click(object sender, EventArgs e)
+        {
+            Utilities.SearchSongByName(textBox2.Text,(DataGridView)myTabControl1.SelectedTab.Controls[0]);
         }
 
         private void treeView1_Click(object sender, EventArgs e)
         {
-            foreach (TreeNode n in treeView1.Nodes)
-            {
-                n.BackColor = Color.Gainsboro;
-                treeView1.Focus();
-            }
-            
-        }
-
-        private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
-        {
-
+            treeView1.HideSelection = true;
         }
     }
 }

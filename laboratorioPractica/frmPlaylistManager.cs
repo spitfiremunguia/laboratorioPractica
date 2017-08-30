@@ -24,7 +24,7 @@ namespace laboratorioPractica
             string playlistName = this.textBox1.Text;
             string playlistDescription = this.textBox2.Text;
             Utilities.CreatePlaylistDirectory(playlistName);
-            Utilities.createlilplyfiles(Utilities.mainFilePath, playlistName, playlistDescription);
+            Utilities.Createlilplyfiles(Utilities.mainFilePath, playlistName, playlistDescription);
             this.Close();
         }
 

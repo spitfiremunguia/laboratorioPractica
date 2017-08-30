@@ -19,7 +19,7 @@ namespace laboratorioPractica
     {
         public static TreeView generalTree = new TreeView();
         public static string mainFilePath = @"C:\lilPlay\";
-        public static void createMainBin(string mainFilePath)
+        public static void CreateMainBin(string mainFilePath)
         {
             if (!Directory.Exists(mainFilePath))
             {
@@ -34,11 +34,12 @@ namespace laboratorioPractica
             foreach (string playlistName in allPlaylistNames)
             {
                 TreeNode n = new TreeNode(playlistName, 0, 0);
+                n.Name = playlistName;
                 aTreeView.Nodes.Add(n);
             }
             return aTreeView;
         }
-        public static List<string> getAllPlaylistbins(string mainFilePath)
+        public static List<string> GetAllPlaylistbins(string mainFilePath)
         {
             List<string> allPlaylistNames = new List<string>();
 
@@ -60,7 +61,7 @@ namespace laboratorioPractica
                 MessageBox.Show("Dude, there is already a playlist with that name", "lol", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        public static void createlilplyfiles(string mainFilePath, string plyName, string description)
+        public static void Createlilplyfiles(string mainFilePath, string plyName, string description)
         {
             List<string> allFolders = Directory.GetDirectories(mainFilePath).ToList();
             foreach (string s in allFolders)
@@ -74,7 +75,7 @@ namespace laboratorioPractica
                 }
             } 
         }
-        public static void sortPlaylistByName(bool upWard, TreeView t)
+        public static void SortPlaylistByName(bool upWard, TreeView t)
         {
 
             List<string> l = new List<string>();
@@ -84,16 +85,17 @@ namespace laboratorioPractica
             }
             if (upWard)
             {
-                l.Sort();
+                l = l.OrderBy(x => x.ToString()).ToList();
+
             }
             else
             {
-                l.Reverse();
+                l = l.OrderByDescending(x => x.ToString()).ToList();
             }
             t.Nodes.Clear();
             Utilities.UpdateTreeview(t, l);
         }
-        public static void searchPlayList(string search, TreeNodeCollection allNodesNames, TreeView t)
+        public static void SearchPlayList(string search, TreeNodeCollection allNodesNames, TreeView t)
         {
             List<string> names = new List<string>();
             foreach (TreeNode n in allNodesNames)
@@ -103,12 +105,29 @@ namespace laboratorioPractica
             int index = names.BinarySearch(search);
             if (index >= 0)
             {
-                t.SelectedNode = t.Nodes[index];
-                t.Nodes[index].BackColor = System.Drawing.Color.Beige;
+                var a= t.Nodes.Find(search,false)[0];
+                t.SelectedNode = a;
+                t.HideSelection = false;
+               
 
             }
         }
-        public static void createPlaylistDisplay(DataGridView d)
+        public static void SearchSongByName(string name,DataGridView d)
+        {
+
+            for(int i=0;i<d.Rows.Count;i++)
+            {
+               if(d.Rows[i].Cells[2].Value.ToString()==name)
+                {
+
+                    d.CurrentCell = d.Rows[i].Cells[2];
+                    d.FirstDisplayedScrollingRowIndex = i;
+                    break;
+                }
+            }
+
+        }
+        public static void CreatePlaylistDisplay(DataGridView d)
         {
             d.BackgroundColor = Color.Gainsboro;
             d.GridColor = Color.Gainsboro;
@@ -118,11 +137,12 @@ namespace laboratorioPractica
             d.Columns.Add("MoreOptions", "");
             for (int j = 0; j < d.Columns.Count; j++)
             {
+                d.Columns[j].SortMode = DataGridViewColumnSortMode.NotSortable;
                 string columnName = d.Columns[j].Name;
                 switch (columnName)
                 {
                     case "Number":
-                        d.Columns[j].Width = 40;
+                        d.Columns[j].Width = 63;
                         break;
                     case "Duration":
                         d.Columns[j].Width = 100;
@@ -133,12 +153,11 @@ namespace laboratorioPractica
                     case "MoreOptions":
                         d.Columns[j].Width = 100;
                         break;
-
                 }
             }
 
         }
-        public static void addSongs(string playListName, string[] FilePaths, DataGridView d)
+        public static void AddSongs(string playListName, string[] FilePaths, DataGridView d)
         {
             string[]lineParts = new string[FilePaths.Length];
             List<string> allSongsNames = new List<string>();
@@ -150,44 +169,119 @@ namespace laboratorioPractica
                 allSongsNames.Add(a.Name);
             }
             System.IO.File.AppendAllLines(mainFilePath + playListName + "\\" + playListName + ".lil", lineParts);
-            refreshPlaylistDisplay(d, FilePaths, allSongsNames);
+            RefreshPlaylistDisplay(d, FilePaths, allSongsNames);
         }
-        public static void GetAllSongsFromDictionary(string playlistPath,DataGridView d)
+        public static void ReadLilFiles(string playlistPath,ref List<string>names,ref List<string>filePaths,bool getPathsAlso)
         {
-        
             List<string> allLines = new List<string>();
             string[] s = System.IO.File.ReadAllLines(playlistPath);
-            List<string> names = new List<string>();
-            List<string> filePaths = new List<string>();
             foreach (string line in s)
             {
                 string[] sub = line.Split('|');
                 names.Add(sub[0]);
-                filePaths.Add(sub[1]);
-            } 
-            refreshPlaylistDisplay(d,filePaths.ToArray(),names);
+                if(getPathsAlso)
+                {
+                    filePaths.Add(sub[1]);
+                }
+                
+            }
         }
-        public static void refreshPlaylistDisplay(DataGridView d,string[]filePaths,List<string>allsongsName)
+        public static void GetAllSongsFromDictionary(string playlistPath,DataGridView d)
+        {
+            List<string> names = new List<string>();
+            List<string> filePaths = new List<string>();
+            ReadLilFiles(playlistPath,ref names,ref filePaths,true);
+            RefreshPlaylistDisplay(d,filePaths.ToArray(),names);
+        }
+        public static void SortPlayList(bool upWard, DataGridView d,string playListName,bool byName)
+        {
+            if(d.Rows.Count>1)
+            {
+                List<Song> allPlaylistSongs = new List<Song>();
+                List<string> names = new List<string>();
+                List<string> paths = new List<string>();
+                ReadLilFiles(mainFilePath + playListName + "\\" + playListName + ".lil", ref names,ref paths,true);
+                for(int i=0;i<d.Rows.Count-1;i++)
+                {
+                    var duration = GetSongDuration(paths[i]);
+                    var name = names[i];
+                    var s = new Song(name,duration.ToString()+":00");
+                    allPlaylistSongs.Add(s);
+                }
+                if(byName)
+                {
+                    if(upWard)
+                    {
+                       allPlaylistSongs= allPlaylistSongs.OrderBy(x => x.getSongName()).ToList();
+                    }
+                    else
+                    {
+                       allPlaylistSongs= allPlaylistSongs.OrderByDescending(x => x.getSongName()).ToList();
+                    }
+                }
+                else
+                {
+                    if (upWard)
+                    {
+                       allPlaylistSongs= allPlaylistSongs.OrderBy(x => x.getSongDuration()).ToList();
+                    }
+                    else
+                    {
+                       allPlaylistSongs= allPlaylistSongs.OrderByDescending(x => x.getSongDuration()).ToList();
+                    }                    
+                }
+                for(int i=0;i<d.Rows.Count-1;i++)
+                {
+                    for(int j=0;j<d.Columns.Count-1;j++)
+                    {
+                        string columnName = d.Columns[j].Name;
+                        switch (columnName)
+                        {
+                            case "Number":
+                                d.Rows[i].Cells[j].Value = i+1;
+                                break;
+                            case "Duration":
+                                d.Rows[i].Cells[j].Value = allPlaylistSongs[i].getSongDuration();
+                                break;
+                            case "Name":
+                                d.Rows[i].Cells[j].Value = allPlaylistSongs[i].getSongName();
+                                break;
+
+                        }
+                        
+                    }
+                }
+            }
+        }
+        public static int GetSongDuration(string path)
+        {
+            try
+            {
+                TagLib.File f = TagLib.File.Create(path, TagLib.ReadStyle.Average);
+                return ((int)f.Properties.Duration.TotalMinutes);
+            }
+            catch
+            {
+                return 0;
+            }
+        }
+        
+        public static void RefreshPlaylistDisplay(DataGridView d,string[]filePaths,List<string>allsongsName)
         {
             int i = d.RowCount-1;
             int j = 0;
-            foreach(string paths in filePaths)
+           
+            foreach (string paths in filePaths)
             {
                 var inf = new DirectoryInfo(filePaths[j]);
-                if(inf.Extension!=".mp3")
-                {
-                    continue;
-                }
                 try
                 {
-                    TagLib.File f = TagLib.File.Create(paths, TagLib.ReadStyle.Average);
-                    var duration = ((int)f.Properties.Duration.TotalMinutes);
-                    
-                    f.Dispose();
+                    var duration = GetSongDuration(paths);
                     d.Rows.Add();
                     d.Rows[i].Cells[0].Value = i + 1;
                     d.Rows[i].Cells[1].Value = duration + ":00";
                     d.Rows[i].Cells[2].Value = allsongsName[j];
+                   
                     j++;
                     i++;
                 }
@@ -195,11 +289,44 @@ namespace laboratorioPractica
                 {
                     continue;
                 }
-               
-              
+                for (int h = 0; h < d.Rows.Count; h++)
+                {
+                    for (int k = 0; k < d.Columns.Count; k++)
+                    {
+                        d.Rows[h].Cells[k].Style.BackColor = Color.LightGray;
+                    }
+                }
+
+
             }
             
         }
-       
+        public static string SearchSongPath(string path,string name)
+        {
+            if(System.IO.File.Exists(mainFilePath + path + "\\" + path + ".lil"))
+            {
+                string[] allLines = System.IO.File.ReadAllLines(mainFilePath + path + "\\" + path + ".lil");
+                Dictionary<string, string> searchFile = new Dictionary<string, string>();
+                string[][] getKeys = new string[allLines.Length][];
+                for (int i = 0; i < allLines.Length; i++)
+                {
+                    getKeys[i] = allLines[i].Split('|');
+                }
+                for (int i = 0; i < getKeys.Length; i++)
+                {
+                    if (!searchFile.ContainsKey(getKeys[i][0]))
+                    {
+                        searchFile.Add(getKeys[i][0], getKeys[i][1]);
+                    }
+
+                }
+                return searchFile[name];
+            }
+            return string.Empty;
+           
+            
+        }
+        
+
     }
 }

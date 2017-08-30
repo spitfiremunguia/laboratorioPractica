@@ -56,6 +56,14 @@
             this.myTabControl1 = new laboratorioPractica.myTabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.menuStrip2 = new System.Windows.Forms.MenuStrip();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.durationToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.upwardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.downwardToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -72,6 +80,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
             this.tableLayoutPanel8.SuspendLayout();
             this.myTabControl1.SuspendLayout();
+            this.menuStrip2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -90,7 +99,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.89724F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 490F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1368, 601);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1373, 601);
             this.tableLayoutPanel1.TabIndex = 3;
             // 
             // tableLayoutPanel2
@@ -109,7 +118,7 @@
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 47.42268F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 52.57732F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(376, 105);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(381, 105);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // pictureBox2
@@ -131,7 +140,7 @@
             this.pictureBox1.Image = global::laboratorioPractica.Properties.Resources.icons8_Más_64;
             this.pictureBox1.Location = new System.Drawing.Point(3, 52);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(90, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(91, 50);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
@@ -144,9 +153,9 @@
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.textBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(99, 3);
+            this.textBox1.Location = new System.Drawing.Point(100, 3);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(274, 34);
+            this.textBox1.Size = new System.Drawing.Size(278, 34);
             this.textBox1.TabIndex = 4;
             // 
             // tableLayoutPanel3
@@ -156,7 +165,7 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 79.92701F));
             this.tableLayoutPanel3.Controls.Add(this.pictureBox3, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.menuStrip1, 1, 0);
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(99, 52);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(100, 52);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 1;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -205,7 +214,7 @@
             this.upwardToolStripMenuItem,
             this.downwardToolStripMenuItem});
             this.nameToolStripMenuItem.Name = "nameToolStripMenuItem";
-            this.nameToolStripMenuItem.Size = new System.Drawing.Size(127, 34);
+            this.nameToolStripMenuItem.Size = new System.Drawing.Size(181, 34);
             this.nameToolStripMenuItem.Text = "abc";
             // 
             // upwardToolStripMenuItem
@@ -229,7 +238,7 @@
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 64.3002F));
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel6, 1, 0);
-            this.tableLayoutPanel4.Location = new System.Drawing.Point(385, 3);
+            this.tableLayoutPanel4.Location = new System.Drawing.Point(390, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 1;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 60F));
@@ -260,6 +269,7 @@
             this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox6.TabIndex = 4;
             this.pictureBox6.TabStop = false;
+            this.pictureBox6.Click += new System.EventHandler(this.pictureBox6_Click);
             this.pictureBox6.MouseLeave += new System.EventHandler(this.pictureBox6_MouseLeave);
             this.pictureBox6.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox6_MouseMove);
             // 
@@ -267,6 +277,7 @@
             // 
             this.tableLayoutPanel7.ColumnCount = 1;
             this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Controls.Add(this.menuStrip2, 0, 1);
             this.tableLayoutPanel7.Controls.Add(this.textBox2, 0, 0);
             this.tableLayoutPanel7.Location = new System.Drawing.Point(95, 3);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
@@ -335,7 +346,6 @@
             this.treeView1.ShowLines = false;
             this.treeView1.Size = new System.Drawing.Size(376, 484);
             this.treeView1.TabIndex = 2;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
             this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
             this.treeView1.DoubleClick += new System.EventHandler(this.treeView1_DoubleClick);
             // 
@@ -350,7 +360,7 @@
             this.tableLayoutPanel8.ColumnCount = 1;
             this.tableLayoutPanel8.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 12.30926F));
             this.tableLayoutPanel8.Controls.Add(this.myTabControl1, 0, 0);
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(385, 114);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(390, 114);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 1;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
@@ -387,12 +397,82 @@
             this.tabPage2.Text = "tabPage2";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // menuStrip2
+            // 
+            this.menuStrip2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menuStrip2.GripStyle = System.Windows.Forms.ToolStripGripStyle.Visible;
+            this.menuStrip2.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.menuStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem1});
+            this.menuStrip2.Location = new System.Drawing.Point(0, 44);
+            this.menuStrip2.Name = "menuStrip2";
+            this.menuStrip2.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip2.Size = new System.Drawing.Size(245, 49);
+            this.menuStrip2.TabIndex = 7;
+            this.menuStrip2.Text = "menuStrip2";
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem2,
+            this.durationToolStripMenuItem});
+            this.toolStripMenuItem1.Font = new System.Drawing.Font("Calibri", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(102, 45);
+            this.toolStripMenuItem1.Text = "Sort by:";
+            // 
+            // toolStripMenuItem2
+            // 
+            this.toolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripMenuItem3,
+            this.toolStripMenuItem4});
+            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(181, 34);
+            this.toolStripMenuItem2.Text = "abc";
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(203, 34);
+            this.toolStripMenuItem3.Text = "Upward";
+            this.toolStripMenuItem3.Click += new System.EventHandler(this.toolStripMenuItem3_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(203, 34);
+            this.toolStripMenuItem4.Text = "Downward";
+            this.toolStripMenuItem4.Click += new System.EventHandler(this.toolStripMenuItem4_Click);
+            // 
+            // durationToolStripMenuItem
+            // 
+            this.durationToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.upwardToolStripMenuItem1,
+            this.downwardToolStripMenuItem1});
+            this.durationToolStripMenuItem.Name = "durationToolStripMenuItem";
+            this.durationToolStripMenuItem.Size = new System.Drawing.Size(181, 34);
+            this.durationToolStripMenuItem.Text = "Duration";
+            // 
+            // upwardToolStripMenuItem1
+            // 
+            this.upwardToolStripMenuItem1.Name = "upwardToolStripMenuItem1";
+            this.upwardToolStripMenuItem1.Size = new System.Drawing.Size(203, 34);
+            this.upwardToolStripMenuItem1.Text = "Upward";
+            this.upwardToolStripMenuItem1.Click += new System.EventHandler(this.upwardToolStripMenuItem1_Click);
+            // 
+            // downwardToolStripMenuItem1
+            // 
+            this.downwardToolStripMenuItem1.Name = "downwardToolStripMenuItem1";
+            this.downwardToolStripMenuItem1.Size = new System.Drawing.Size(203, 34);
+            this.downwardToolStripMenuItem1.Text = "Downward";
+            this.downwardToolStripMenuItem1.Click += new System.EventHandler(this.downwardToolStripMenuItem1_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Lavender;
-            this.ClientSize = new System.Drawing.Size(1368, 601);
+            this.ClientSize = new System.Drawing.Size(1373, 601);
             this.Controls.Add(this.tableLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "Form1";
@@ -417,6 +497,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.myTabControl1.ResumeLayout(false);
+            this.menuStrip2.ResumeLayout(false);
+            this.menuStrip2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -449,6 +531,14 @@
         private System.Windows.Forms.ToolStripMenuItem nameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem upwardToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem downwardToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem durationToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem upwardToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem downwardToolStripMenuItem1;
     }
 }
 

@@ -49,12 +49,12 @@ namespace laboratorioPractica
                 {
                     OpenFileDialog opnSearchFiles = new OpenFileDialog();
                     opnSearchFiles.Multiselect = true;
-                    opnSearchFiles.Filter = "MP3s | *.mp3";
+                    opnSearchFiles.Filter = "All Supported Audio | *.mp3; *.wma | MP3s | *.mp3 | WMAs | *.wma";
                     opnSearchFiles.ShowDialog();
                     string[]allPaths=opnSearchFiles.FileNames;
                     opnSearchFiles.Dispose();
                     DataGridView d = TabPages[i].Controls[0] as DataGridView;
-                    Utilities.addSongs(this.SelectedTab.Text,allPaths,d);
+                    Utilities.AddSongs(this.SelectedTab.Text,allPaths,d);
                 }
             }
         }
