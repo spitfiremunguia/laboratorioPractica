@@ -18,13 +18,20 @@ namespace laboratorioPractica
     public partial class Form1 : Form
     {
         List<Song> mainList = new List<Song>();
+        
+       
         public Form1()
         {
             InitializeComponent();
             Utilities.CreateMainBin(Utilities.mainFilePath);            
             treeView1 = Utilities.UpdateTreeview(treeView1,Utilities.GetAllPlaylistbins(Utilities.mainFilePath));
             myTabControl1.TabPages.RemoveAt(0);
+            axWindowsMediaPlayer2.Ctlenabled = true;
+            WMPLib.IWMPControls3 controls = (WMPLib.IWMPControls3)axWindowsMediaPlayer2.Ctlcontrols;
+
+
         }
+       
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
            
@@ -35,6 +42,7 @@ namespace laboratorioPractica
 
           
         }
+        
 #region //buttons events
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
@@ -189,6 +197,12 @@ namespace laboratorioPractica
         private void treeView1_Click(object sender, EventArgs e)
         {
             treeView1.HideSelection = true;
+            
+        }
+
+        private void axWindowsMediaPlayer2_PlayStateChange(object sender, AxWMPLib._WMPOCXEvents_PlayStateChangeEvent e)
+        {
+            MessageBox.Show("");
         }
     }
 }

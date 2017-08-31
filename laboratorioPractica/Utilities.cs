@@ -195,6 +195,7 @@ namespace laboratorioPractica
         }
         public static void SortPlayList(bool upWard, DataGridView d,string playListName,bool byName)
         {
+            
             if(d.Rows.Count>1)
             {
                 List<Song> allPlaylistSongs = new List<Song>();

@@ -79,11 +79,11 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Berlin Sans FB", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(66, 23);
+            this.label3.Location = new System.Drawing.Point(267, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(443, 31);
+            this.label3.Size = new System.Drawing.Size(40, 31);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Say hello to your new playlist faggot!";
+            this.label3.Text = "Hi";
             // 
             // pictureBox1
             // 
