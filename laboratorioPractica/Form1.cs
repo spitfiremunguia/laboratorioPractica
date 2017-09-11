@@ -7,9 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using Id3Lib;
-using ICSharpCode;
-using Mp3Lib;
 using System.IO;
 using laboratorioPractica.Properties;
 
